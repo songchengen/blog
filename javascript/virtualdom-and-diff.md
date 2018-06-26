@@ -97,7 +97,7 @@ JSON.stringify(domObj)
 
 有了对虚拟DOM的构想，实现起来也就很简单了。
 
-*** 生成虚拟DOM ***
+***生成虚拟DOM***
 
 我们给VirtualDom对象提供createElement方法，用于生成虚拟DOM对象，下文中用`element`代替。
 
@@ -155,7 +155,7 @@ const Footer = VirtualDom.createElement(
 );
 ```
 
-*** 渲染DOM ***
+***渲染DOM***
 
 为VirtualDom提供renderDOM方法，将虚拟DOM渲染至浏览器平台。函数的原型很简单，这里就不赘述了。
 
@@ -172,7 +172,7 @@ VirtualDom.renderDOM = function (element, selector) {
     var _child;
     children.forEach(function(child) {
       _child = handler.isString(child) ? document.createTextNode(child) :
-        _render(child); // 递归生成子节点 
+        _render(child); // 递归生成子节点
       _ele.appendChild(_child);
     });
     return _ele;
