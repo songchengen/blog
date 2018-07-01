@@ -141,7 +141,7 @@ this指向新生成的对象，即`jack`。
 
 ## apply、call和bind的调用
 
-很多时候，我们需要明确的this指向，甚至动态的改变或者绑定this对象。`apply`、`call`和`bind`就可以动态的绑定this对象。
+很多时候，我们需要明确的this指向，甚至动态的改变或者绑定this对象。`apply`、`call`和`bind`都可以动态绑定this对象。
 
 ```javascript
 var name = 'jack';
