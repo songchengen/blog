@@ -38,14 +38,13 @@ var otherSingle = getOtherObject();
 
 ```
 
-较之前单例的实现方法，引入了curry的思想，实现了代理单例工厂的复用。这里给curry打个问号，proxyFactory函数其实只接受一个参数，尽管最后返回了一个工厂函数，这里姑且仅当高阶函数吧。（有时间的话，再来研究一下curry函数）。
+较之前单例的实现方法，引入了curry的思想，实现了代理单例工厂的复用。这里给curry打个问号，因为尽管最后返回了一个工厂函数，但proxyFactory函数其实只接受一个参数，在这里仅当做高阶函数看待吧。
 
 **我个人比较喜欢通过代理的方式实现单例**
 
 ## 图片加载
 
-可能由于网络或者图片尺寸的影响，我们会在触发请求之后很长一段时间（可能几秒甚至更长）才能拿到图片资源，中途我们可以给图片预设一个loading的动图。当然可以通过代理的方式实现。
-
+可能由于网络或者图片尺寸的影响，我们会在触发请求之后很长一段时间（可能几秒甚至更长）才能拿到图片资源，中途我们可以给图片预设一个loading的动图。
 
 ```javascript
 var ProxyImage = function (img) {
@@ -64,7 +63,7 @@ var ProxyImage = function (img) {
 ProxyImage(document.getElementsByTagName('img')[0]).setSrc('...path');
 ```
 
-通过 proxyImg 代理图片的加载过程，当加载成功后，通知真是的img设置src。
+通过 proxyImg 代理图片的加载过程，当加载成功后，通知真实的img设置src。
 
 ## 小结
 
