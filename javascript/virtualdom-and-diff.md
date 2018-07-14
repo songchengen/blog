@@ -181,3 +181,4 @@ VirtualDom.renderDOM = function (element, selector) {
   return element;
 };
 ```
+待续。。。
