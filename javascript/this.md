@@ -161,8 +161,56 @@ console.log(getName.apply(person)); // 'bob'
 console.log(person.getName.call()); // 'jack'，默认绑定全局对象
 ```
 
+**特别**
+
+在使用bind方法时，需要注意调用bind方法返回的函数，this对象将不会被apply、call和bind的改变。
+
+```javascript
+var job = { name: 'job' };
+
+var bob = { nameL: 'bob' };
+
+var getName = function () { return this.name };
+
+var getJobName = getName.bind(job);
+
+console.log(getJobName()); // 'job'
+
+var getBobName =  getJobName.bind(bob);
+
+console.log(getBobName()); // 'job'
+
+```
+
 [更多关于apply、call和bind的用法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+
+## 箭头函数
+
+箭头函数是ES6新增的规范，主流浏览器基本都已支持，写法上较之普通函数更加简单（函数式编程不能更爽，可惜我不太会），除此之外，比以前普通函数`执行时绑定this`相比，箭头函数内部是没有this对象的。
+
+举个例子
+
+```javascript
+var jack = {
+  age: 21,
+  getAge: () => {
+    return this.age;
+  }
+}
+
+var age = 23;
+var getAge = jack.getAge;
+
+console.log(jack.getAge()); // ???
+console.log(getAge()); // ???
+```
+
+执行以上函数，发现打印的结果都是`23`，我相信很多同学都以为应该是`21`（我一开始也是这么想的，现实狠狠地给了我一个大耳巴子）。
+
+箭头函数本身没有提供this对象，它使用的this来自于申明时的外部环境，而普通的如`jack`这样的对象，实际上也是没有this对象的。那么`getAge`使用的this对象就只能是全局对象了，故结果都是`23`。
+
+总结一下，确定箭头函数内部使用的this对象时，找他申明环境中的this对象即可。
 
 ## 小结
 
-到这里大部分关于this对象的问题（箭头函数除外），基本都能解决了。合理的使用this对象，会给我们的编程带来许多惊喜，但是由于其独特的性质，使用的时候也不能掉以轻心。
+到这里大部分关于this对象的问题，基本都能解决了。但JavaScript变化万千，谁又知道还有多少坑呢！
