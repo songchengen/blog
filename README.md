@@ -6,7 +6,7 @@
 
 [this对象](./javascript/this.md)
 
-[虚拟DOM及diff算法的实现（...待续）](./javascript/virtualdom-and-diff)
+[虚拟DOM及diff算法的实现（...待续）](./javascript/virtualdom-and-diff.md)
 
 [JavaScript设计模式之单例模式](./javascript/design-pattern-singleton.md)
 
