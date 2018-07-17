@@ -4,6 +4,8 @@
 
 ### JavaScript
 
+[实现JavaScript一些工具方法及原生API](//github.com/songchengen/javascript)
+
 [this对象](./javascript/this.md)
 
 [虚拟DOM及diff算法的实现（...待续）](./javascript/virtualdom-and-diff.md)
