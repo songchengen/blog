@@ -8,7 +8,7 @@
 
 ## 前言
 
-Node中的事件模块——`events`，我们可以对一个事件主体设置监听事件（订阅），当监听事件被发出（发布）时，监听者或者订阅会受到请求，触发回调。
+Node中的事件模块——`events`，让我们可以对一个事件主体设置监听事件（订阅），当监听事件被发出（发布）时，监听者或者订阅会受到请求，触发回调。
 
 ```javascript
 // 监听
@@ -21,7 +21,7 @@ events.emit('something', data);
 
 ```
 
-使用发布订阅模式，可以很好的把代码解耦，在接触ES6/7之前，一直是被我认为是处理异步的利器，即使与Promise、Generator等新规范相比。处理异步之外，发布订阅模式也有更多的市场。
+使用发布订阅模式，可以很好的把代码解耦，在接触ES6/7之前，一直是被我认为是处理异步的利器，即使是与Promise、Generator等新规范相比。处理异步之外，发布订阅模式也有更多的市场。
 
 ## 异步
 
@@ -213,7 +213,7 @@ EventRouter.on = function (key, fn) {
  * @param {KoaNext} next
  */
 EventRouter.emit = async function (key, ctx, next) {
-  if (!this.eventsSet[key]) { // 为订阅路由，手动跳出
+  if (!this.eventsSet[key]) { // 未订阅路由，手动跳出
     await next();
   } else { // 否则执行controller，同时注入ctx和next，并绑定app（非箭头函数绑定生效，否则this对象指向声明所在上下文）
     this.eventsSet[key].call(ctx.app, ctx, next);
